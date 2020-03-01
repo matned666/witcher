@@ -38,10 +38,12 @@ class SpeciesTest {
     }
 
     @Test
-    void checkIfGeraltCanWalk(){
+    void checkIfGeraltCanWalk_AndPreviousFieldIsAccessibleAgain(){
         geralt.setActualField(17,1);
         geralt.move(Direction.RIGHT);
 
+        assertTrue(testPlace.getMatrix()[17][1].isAccessible());
+        assertFalse(testPlace.getMatrix()[17][2].isAccessible());
         assertEquals(geralt.getActualPositionField(), testPlace.getMatrix()[17][2]);
     }
 

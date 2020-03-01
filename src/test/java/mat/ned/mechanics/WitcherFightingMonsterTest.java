@@ -29,7 +29,7 @@ class WitcherFightingMonsterTest {
     }
 
     @Test
-    public void isMonsterKilledByWitcher(){
+    void isMonsterKilledByWitcher(){
         geralt.attack(giantFrog, 15);
         assertTrue(giantFrog.isAlive());
         geralt.attack(giantFrog, 15);
@@ -39,13 +39,13 @@ class WitcherFightingMonsterTest {
     }
 
     @Test
-    public void isWitcherKilledByMonster(){
+    void isWitcherKilledByMonster(){
         giantFrog.attack(geralt, 50);
         assertFalse(geralt.isAlive());
     }
 
     @Test
-    public void isFrogWeakenByAMagicCast(){
+    void isFrogWeakenByAMagicCast(){
         Magic weakening = new Magic_MonsterWeakening();
         geralt.magicCast(weakening,giantFrog);
         giantFrog.attack(geralt,20);
@@ -54,7 +54,7 @@ class WitcherFightingMonsterTest {
     }
 
     @Test
-    public void isWitcherWeakenByAGlueSlap(){
+    void isWitcherWeakenByAGlueSlap(){
         Magic glueSlap = new Magic_GlueSlap();
         giantFrog.magicCast(glueSlap, geralt);
         geralt.attack(giantFrog,20);
@@ -62,7 +62,7 @@ class WitcherFightingMonsterTest {
     }
 
     @Test
-    public void witcherCannotCastAnySpellWhenHasNoManaLeft(){
+    void witcherCannotCastAnySpellWhenHasNoManaLeft(){
         geralt.magicCast(weakening, giantFrog);
         geralt.magicCast(weakening, giantFrog);
         geralt.magicCast(weakening, giantFrog);
@@ -75,7 +75,7 @@ class WitcherFightingMonsterTest {
     }
 
     @Test
-    public void frogCannotCastAnySpellWhenHasNoManaLeft(){
+    void frogCannotCastAnySpellWhenHasNoManaLeft(){
         giantFrog.magicCast(glueSlap, geralt);
         giantFrog.magicCast(glueSlap, geralt);
         giantFrog.magicCast(glueSlap, geralt);
@@ -88,7 +88,7 @@ class WitcherFightingMonsterTest {
     }
 
     @Test
-    public void speciesSpellCastingRemovesMana(){
+    void speciesSpellCastingRemovesMana(){
         giantFrog.magicCast(glueSlap, geralt);
         geralt.magicCast(weakening, giantFrog);
 
@@ -108,8 +108,5 @@ class WitcherFightingMonsterTest {
         assertEquals(geralt.getMana(), 7);
         assertEquals(giantFrog.getMana(), 3);
     }
-
-
-
 
 }
