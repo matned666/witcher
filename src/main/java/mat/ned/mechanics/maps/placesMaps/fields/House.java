@@ -3,6 +3,10 @@ package mat.ned.mechanics.maps.placesMaps.fields;
 import mat.ned.mechanics.Species;
 
 public class House extends MapField  {
+    public House() {
+        isAccessible = true;
+    }
+
     @Override
     public void fieldEffects(Species species) {
 
@@ -10,6 +14,32 @@ public class House extends MapField  {
 
     @Override
     public String toString() {
-        return "\u2302";
+        return "#";
+    }
+
+    @Override
+    public void setOpen(boolean open) {
+
+    }
+
+    @Override
+    public void action(Species species) {
+
+    }
+
+    @Override
+    public boolean isOpen() {
+        return false;
+    }
+
+    @Override
+    public void setAccessible(boolean accessible) {
+        this.isAccessible = accessible;
+
+    }
+
+    @Override
+    public boolean isAccessible() {
+        return this.isAccessible;
     }
 }

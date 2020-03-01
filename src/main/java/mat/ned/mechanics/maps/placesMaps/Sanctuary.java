@@ -1,15 +1,16 @@
 package mat.ned.mechanics.maps.placesMaps;
 
+import mat.ned.mechanics.maps.placesMaps.Place;
 import mat.ned.mechanics.maps.worldMap.MapStageType;
 
 import java.io.FileNotFoundException;
 
-public class Forest1  extends Place {
+public class Sanctuary extends Place {
 
-    public Forest1() throws FileNotFoundException {
+    public Sanctuary() throws FileNotFoundException {
         this.isAccessible = true;
-        this.getPlaceType = MapStageType.FORREST;
-        path = "src/main/resources/Forest1.map";
+        this.getPlaceType = MapStageType.CITY;
+        path = "src/main/resources/Sanctuary.map";
         splitLoadedDataToMapArray(path);
     }
 

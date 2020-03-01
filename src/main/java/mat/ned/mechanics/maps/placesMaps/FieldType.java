@@ -15,7 +15,8 @@ public enum FieldType {
     GRAIN_FIELD,
     FENCE,
     DOOR,
-    CAVE_ENTRANCE
+    CAVE_ENTRANCE,
+    OTHER
 
 
 

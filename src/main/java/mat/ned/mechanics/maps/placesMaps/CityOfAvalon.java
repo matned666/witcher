@@ -8,13 +8,18 @@ public class CityOfAvalon extends Place {
     public CityOfAvalon() throws FileNotFoundException {
         this.isAccessible = true;
         this.getPlaceType = MapStageType.CITY;
-        path = "C:\\Users\\Perun\\Downloads\\Witcher\\src\\main\\resources\\CityOfAvalon.map";
+        path = "src/main/resources/CityOfAvalon.map";
         splitLoadedDataToMapArray(path);
     }
 
      @Override
     public boolean isAccessible() {
         return this.isAccessible;
+    }
+
+    @Override
+    public void action() {
+
     }
 
     @Override

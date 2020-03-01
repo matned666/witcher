@@ -10,16 +10,16 @@ import java.util.Scanner;
 public abstract class Place {
 
     protected int ROWS;
-    protected int COLUMNS;
     protected boolean isAccessible;
     protected MapStageType getPlaceType;
     protected MapField[][] matrix;
     protected String path;
 
-    public Place() throws NullPointerException {
+    public Place() {
     }
 
     public abstract boolean isAccessible();
+    public abstract void action();
 
     public abstract MapStageType getPlaceType();
 
@@ -67,7 +67,6 @@ public abstract class Place {
         return counter;
     }
 
-
     private MapField getField(String loadedString) {
         switch (loadedString) {
             case "*": return new Road();
@@ -86,4 +85,7 @@ public abstract class Place {
         }
     }
 
+    public MapField[][] getMatrix() {
+        return matrix;
+    }
 }

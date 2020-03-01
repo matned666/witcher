@@ -4,12 +4,12 @@ import mat.ned.mechanics.maps.worldMap.MapStageType;
 
 import java.io.FileNotFoundException;
 
-public class Forest1  extends Place {
+public class ParametrizedMap  extends Place {
 
-    public Forest1() throws FileNotFoundException {
+    public ParametrizedMap(String path) throws FileNotFoundException {
         this.isAccessible = true;
         this.getPlaceType = MapStageType.FORREST;
-        path = "src/main/resources/Forest1.map";
+        this.path = path;
         splitLoadedDataToMapArray(path);
     }
 
