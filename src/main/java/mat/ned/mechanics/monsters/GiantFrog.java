@@ -3,6 +3,8 @@ package mat.ned.mechanics.monsters;
 
 import mat.ned.mechanics.maps.placesMaps.Colored;
 
+import java.util.Random;
+
 public class GiantFrog extends Monster {
 
 
@@ -11,6 +13,7 @@ public class GiantFrog extends Monster {
         this.hp = 30;
         this.mana = 6;
         this.isWaterBreathing = true;
+        this.strength = 50;
     }
 
     public GiantFrog(String name) {
@@ -18,6 +21,7 @@ public class GiantFrog extends Monster {
         this.name = name;
         this.hp = 30;
         this.mana = 6;
+        this.strength = 50;
     }
 
     @Override

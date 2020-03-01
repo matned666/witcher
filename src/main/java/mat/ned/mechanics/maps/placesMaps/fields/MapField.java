@@ -13,6 +13,7 @@ public abstract class MapField<E> {
     protected FieldType fieldType;
     protected List<E> listOfEffects;
     protected boolean isAccessible;
+    protected Species speciesOnThis;
 
     public abstract void fieldEffects(Species species);
 
@@ -27,4 +28,13 @@ public abstract class MapField<E> {
 
 
     public abstract boolean isAccessible();
+
+    public void setSpeciesOnThis(Species species){
+        this.speciesOnThis = species;
+    }
+
+
+    public Species getSpeciesOnThis(){
+        return this.speciesOnThis;
+    }
 }

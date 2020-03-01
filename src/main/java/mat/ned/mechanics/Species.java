@@ -17,6 +17,7 @@ public abstract class Species {
     protected MapField actualField;
     protected boolean isWaterBreathing;
     protected String name;
+    protected int strength;
     int rowMove;
     int columnMove;
 
@@ -68,6 +69,7 @@ public abstract class Species {
         this.columnPosition = columnPosition;
         actualField = actualMap.getMatrix()[rowPosition][columnPosition];
         actualField.setAccessible(false);
+        actualField.setSpeciesOnThis(this);
     }
 
     public void setActualMap(Place actualMap) {
@@ -99,16 +101,18 @@ public abstract class Species {
 
     public void move(Direction direction){
         moveDirection(direction);
-        try{
+        if(isInBounds() ){
             if(actualMap.getMatrix()[rowPosition+rowMove][columnPosition+columnMove].isAccessible()) {
                 actualField.setAccessible(true);
+                actualField.setSpeciesOnThis(null);
                 setActualField(rowPosition + rowMove, columnPosition + columnMove);
                 actualField.setAccessible(false);
+                actualField.setSpeciesOnThis(this);
                 getEffect(this);
+            }else{
+                setActualField(rowPosition,columnPosition);
+                action(direction);
             }
-        }catch(ArrayIndexOutOfBoundsException ex){
-            System.out.println("Koniec planszy");
-            setActualField(rowPosition,columnPosition);
         }
     }
 
@@ -118,6 +122,16 @@ public abstract class Species {
             else species.wasHit(1);
     }
 
+    private boolean isInBounds(){
+        if(rowMove != 0 && columnMove == 0)
+            return     (rowPosition+rowMove >= 0
+                    && rowPosition+rowMove < actualMap.getMatrix().length
+                    && columnPosition < actualMap.getMatrix()[rowPosition+rowMove].length);
+        else if(rowMove == 0 && columnMove != 0)
+            return  (columnPosition+columnMove >= 0
+                    && columnPosition+columnMove < actualMap.getMatrix()[rowPosition].length);
+        else return false;
+    }
 
     public MapField getActualPositionField(){
         return actualField;
@@ -130,10 +144,15 @@ public abstract class Species {
 
     public void action(Direction direction){
         moveDirection(direction);
-        try{
-            actualMap.getMatrix()[rowPosition+rowMove][columnPosition+columnMove].action(this);
-        }catch(Exception ex){
+        if(isInBounds())
+            if(actualMap.getMatrix()[rowPosition+rowMove][columnPosition+columnMove].getSpeciesOnThis() == null)
+                actualMap.getMatrix()[rowPosition+rowMove][columnPosition+columnMove].action(this);
+            else {
+                int hit = (int) (Math.random()*strength);
+                Species attacked = actualMap.getMatrix()[rowPosition+rowMove][columnPosition+columnMove].getSpeciesOnThis();
+                this.attack(actualMap.getMatrix()[rowPosition+rowMove][columnPosition+columnMove].getSpeciesOnThis(), hit);
+                System.out.println(this.typeOfSpecies()+ " has attacked "+attacked.typeOfSpecies()+" for "+hit+" HP");
+            }
 
-        }
     }
 }

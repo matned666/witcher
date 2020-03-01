@@ -24,7 +24,7 @@ public abstract class Place {
     public abstract MapStageType getPlaceType();
 
 
-    protected void splitLoadedDataToMapArray(String path) throws FileNotFoundException {
+    void splitLoadedDataToMapArray(String path) throws FileNotFoundException {
         File file = new File(path);
         Scanner scanner = new Scanner(file);
         ROWS = getNumberOfRows(scanner);

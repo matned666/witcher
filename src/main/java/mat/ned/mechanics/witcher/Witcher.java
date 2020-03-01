@@ -8,6 +8,7 @@ public class Witcher extends Species {
         this.weakenAmount = 0;
         this.hp = 50;
         this.mana = 10;
+        this.strength = 20;
     }
 
     public Witcher(String name) {
@@ -15,6 +16,7 @@ public class Witcher extends Species {
         this.name = name;
         this.hp = 50;
         this.mana = 10;
+        this.strength = 20;
     }
 
     @Override

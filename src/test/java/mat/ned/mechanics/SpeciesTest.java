@@ -156,6 +156,27 @@ class SpeciesTest {
         assertFalse(testPlace.getMatrix()[11][0].isOpen());
         geralt.move(Direction.UP);
 
+    }
+
+    @Test
+    void isWitcherMakingActionWhenPathIsBlocked(){
+        Species geralt = new Witcher("Geralt");
+        geralt.setActualMap(testPlace);
+        giantFrog.setActualField(13,3);
+        geralt.setActualField(13,2);
+        geralt.move(Direction.RIGHT);
+        assertEquals(geralt.actualField, testPlace.getMatrix()[13][2]);
+        assertNotEquals(giantFrog.getHitPoints(), 30);
+
+    }
+
+    @Test
+    void isGiantFrogSignedToFieldWhereItStands_AndIfItNullWhenItMoved(){
+
+        giantFrog.setActualField(16,3);
+        assertEquals(testPlace.getMatrix()[16][3].getSpeciesOnThis().typeOfSpecies(), "Giant frog");
+        giantFrog.move(Direction.LEFT);
+        assertNull(testPlace.getMatrix()[16][3].getSpeciesOnThis());
 
     }
 
