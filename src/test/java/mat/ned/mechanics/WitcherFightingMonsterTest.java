@@ -20,6 +20,10 @@ class WitcherFightingMonsterTest {
     private Magic weakening;
 
 
+    //TODO Mockito tests
+
+
+
     @BeforeEach
     void setUpEach(){
         giantFrog = new GiantFrog();

@@ -20,6 +20,7 @@ class SpeciesTest {
     private Witcher geralt;
     private Place testPlace;
 
+//TODO Mockito tests
 
     @BeforeEach
     void setUpEach() throws FileNotFoundException {

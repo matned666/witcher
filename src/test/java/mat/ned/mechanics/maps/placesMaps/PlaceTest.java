@@ -12,6 +12,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class PlaceTest {
     private Place testPlace;
 
+    //TODO Mockito tests
+
+
     @BeforeEach
     void setup() throws FileNotFoundException {
         testPlace = new ParametrizedMap("src/main/resources/test.map");
