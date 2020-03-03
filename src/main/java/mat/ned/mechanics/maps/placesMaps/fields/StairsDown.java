@@ -1,11 +1,10 @@
 package mat.ned.mechanics.maps.placesMaps.fields;
 
 import mat.ned.mechanics.species.Species;
-import mat.ned.mechanics.maps.placesMaps.Colored;
 
-public class Grass extends MapField  {
+public class StairsDown extends MapField  {
 
-    public Grass() {
+    public StairsDown() {
         isAccessible = true;
     }
 
@@ -16,7 +15,7 @@ public class Grass extends MapField  {
 
     @Override
     public String toString() {
-        return Colored.get(Colored.ANSI_GREEN,"_");
+        return "\\";
     }
 
     @Override
@@ -37,7 +36,6 @@ public class Grass extends MapField  {
     @Override
     public void setAccessible(boolean accessible) {
         this.isAccessible = accessible;
-
     }
 
     @Override

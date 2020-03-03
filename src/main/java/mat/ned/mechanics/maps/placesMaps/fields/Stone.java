@@ -1,6 +1,6 @@
 package mat.ned.mechanics.maps.placesMaps.fields;
 
-import mat.ned.mechanics.Species;
+import mat.ned.mechanics.species.Species;
 import mat.ned.mechanics.maps.placesMaps.Colored;
 
 public class Stone extends MapField  {

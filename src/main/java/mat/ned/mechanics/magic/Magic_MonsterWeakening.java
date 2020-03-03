@@ -1,6 +1,6 @@
 package mat.ned.mechanics.magic;
 
-import mat.ned.mechanics.Species;
+import mat.ned.mechanics.species.Species;
 
 public class Magic_MonsterWeakening extends Magic {
 
@@ -13,14 +13,13 @@ public class Magic_MonsterWeakening extends Magic {
 
     @Override
     public void cast(Species species) {
-        super.target = species.getClass().getSimpleName();
+        this.target = species;
         species.weaken(WEAKEN_EFFECT_ON_TARGET_SPECIES);
     }
 
     @Override
     public void castEffects(Species caster) {
-        super.caster = caster.getClass().getSimpleName();
-        System.out.println(toString());
+        this.caster = caster;
     }
 
     @Override
@@ -30,8 +29,8 @@ public class Magic_MonsterWeakening extends Magic {
 
     @Override
     public String toString() {
-        return toVoice()+"\n"+super.caster+" casted Monster Weakening on "+super.target+", weakening him by "+WEAKEN_EFFECT_ON_TARGET_SPECIES+" pts.\n" +
-                "That spell didn't have any additional effect on "+super.caster;
+        return toVoice()+"\n"+this.caster.typeOfSpecies()+" casted Monster Weakening on "+this.target.typeOfSpecies()+", weakening him by "+WEAKEN_EFFECT_ON_TARGET_SPECIES+" pts.\n" +
+                "That spell didn't have any additional effect on "+this.caster.typeOfSpecies();
     }
 
     @Override

@@ -1,8 +1,7 @@
 package mat.ned.mechanics.maps.placesMaps.fields;
 
-import mat.ned.mechanics.Species;
+import mat.ned.mechanics.species.Species;
 import mat.ned.mechanics.maps.placesMaps.Colored;
-import mat.ned.mechanics.maps.placesMaps.fields.MapField;
 
 public class Swamp extends MapField {
 

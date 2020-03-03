@@ -4,9 +4,10 @@ import mat.ned.mechanics.maps.placesMaps.Direction;
 import mat.ned.mechanics.maps.placesMaps.ParametrizedMap;
 import mat.ned.mechanics.maps.placesMaps.Place;
 import mat.ned.mechanics.maps.placesMaps.fields.MapField;
-import mat.ned.mechanics.monsters.GiantFrog;
-import mat.ned.mechanics.monsters.Monster;
-import mat.ned.mechanics.witcher.Witcher;
+import mat.ned.mechanics.species.Species;
+import mat.ned.mechanics.species.monsters.GiantFrog;
+import mat.ned.mechanics.species.monsters.Monster;
+import mat.ned.mechanics.species.humans.Witcher;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -87,25 +88,25 @@ class SpeciesTest {
     void isItPossibleToMoveUpAndDown_IsItGoingOutBounds(){
         geralt.setActualField(16,13);
         geralt.move(Direction.UP);
-        assertEquals(geralt.actualField, testPlace.getMatrix()[15][13]);
+        assertEquals(geralt.getActualPositionField(), testPlace.getMatrix()[15][13]);
         geralt.move(Direction.DOWN);
-        assertEquals(geralt.actualField, testPlace.getMatrix()[16][13]);
+        assertEquals(geralt.getActualPositionField(), testPlace.getMatrix()[16][13]);
         for (int i = 0; i < 17; i++)  geralt.move(Direction.UP);
-        assertEquals(geralt.actualField, testPlace.getMatrix()[12][13]);
+        assertEquals(geralt.getActualPositionField(), testPlace.getMatrix()[12][13]);
         geralt.move(Direction.DOWN);
-         assertEquals(geralt.actualField, testPlace.getMatrix()[13][13]);
+         assertEquals(geralt.getActualPositionField(), testPlace.getMatrix()[13][13]);
         geralt.move(Direction.DOWN);
-        assertEquals(geralt.actualField, testPlace.getMatrix()[14][13]);
+        assertEquals(geralt.getActualPositionField(), testPlace.getMatrix()[14][13]);
         geralt.move(Direction.DOWN);
-        assertEquals(geralt.actualField, testPlace.getMatrix()[15][13]);
+        assertEquals(geralt.getActualPositionField(), testPlace.getMatrix()[15][13]);
         geralt.move(Direction.DOWN);
-        assertEquals(geralt.actualField, testPlace.getMatrix()[16][13]);
+        assertEquals(geralt.getActualPositionField(), testPlace.getMatrix()[16][13]);
         geralt.move(Direction.DOWN);
-        assertEquals(geralt.actualField, testPlace.getMatrix()[17][13]);
+        assertEquals(geralt.getActualPositionField(), testPlace.getMatrix()[17][13]);
         geralt.move(Direction.DOWN);
-        assertEquals(geralt.actualField, testPlace.getMatrix()[17][13]);
+        assertEquals(geralt.getActualPositionField(), testPlace.getMatrix()[17][13]);
         geralt.move(Direction.DOWN);
-        assertEquals(geralt.actualField, testPlace.getMatrix()[17][13]);
+        assertEquals(geralt.getActualPositionField(), testPlace.getMatrix()[17][13]);
 
     }
 
@@ -120,7 +121,7 @@ class SpeciesTest {
         geralt.move(Direction.LEFT);
         geralt.move(Direction.UP);
 
-        assertEquals(geralt.actualField, testPlace.getMatrix()[5][1]);
+        assertEquals(geralt.getActualPositionField(), testPlace.getMatrix()[5][1]);
 
     }
 
@@ -154,7 +155,7 @@ class SpeciesTest {
         assertTrue(testPlace.getMatrix()[11][0].isOpen());
         geralt.move(Direction.DOWN);
         geralt.move(Direction.DOWN);
-        assertEquals(geralt.actualField, testPlace.getMatrix()[12][0]);
+        assertEquals(geralt.getActualPositionField(), testPlace.getMatrix()[12][0]);
         geralt.action(Direction.UP);
         assertFalse(testPlace.getMatrix()[11][0].isOpen());
         geralt.move(Direction.UP);
@@ -168,7 +169,7 @@ class SpeciesTest {
         giantFrog.setActualField(13,3);
         geralt.setActualField(13,2);
         geralt.move(Direction.RIGHT);
-        assertEquals(geralt.actualField, testPlace.getMatrix()[13][2]);
+        assertEquals(geralt.getActualPositionField(), testPlace.getMatrix()[13][2]);
         assertNotEquals(giantFrog.getHitPoints(), 30);
 
     }

@@ -1,6 +1,6 @@
 package mat.ned.mechanics.maps.placesMaps.fields;
 
-import mat.ned.mechanics.Species;
+import mat.ned.mechanics.species.Species;
 import mat.ned.mechanics.maps.placesMaps.FieldType;
 
 import java.util.List;
@@ -16,6 +16,8 @@ public abstract class MapField<E> {
     protected Species speciesOnThis;
 
     public abstract void fieldEffects(Species species);
+
+
 
     public abstract String toString();
 
@@ -33,6 +35,11 @@ public abstract class MapField<E> {
         this.speciesOnThis = species;
     }
 
+    public String print(){
+        if(speciesOnThis!=null) return speciesOnThis.toString();
+        return toString();
+
+    }
 
     public Species getSpeciesOnThis(){
         return this.speciesOnThis;

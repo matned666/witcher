@@ -3,9 +3,9 @@ package mat.ned.mechanics;
 import mat.ned.mechanics.magic.Magic;
 import mat.ned.mechanics.magic.Magic_GlueSlap;
 import mat.ned.mechanics.magic.Magic_MonsterWeakening;
-import mat.ned.mechanics.monsters.GiantFrog;
-import mat.ned.mechanics.monsters.Monster;
-import mat.ned.mechanics.witcher.Witcher;
+import mat.ned.mechanics.species.monsters.GiantFrog;
+import mat.ned.mechanics.species.monsters.Monster;
+import mat.ned.mechanics.species.humans.Witcher;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -34,7 +34,7 @@ class WitcherFightingMonsterTest {
 
     @Test
     void isMonsterKilledByWitcher(){
-        geralt.attack(giantFrog, 15);
+        geralt.attack(giantFrog, 10);
         assertTrue(giantFrog.isAlive());
         geralt.attack(giantFrog, 15);
 
@@ -61,8 +61,8 @@ class WitcherFightingMonsterTest {
     void isWitcherWeakenByAGlueSlap(){
         Magic glueSlap = new Magic_GlueSlap();
         giantFrog.magicCast(glueSlap, geralt);
-        geralt.attack(giantFrog,20);
-        assertEquals(giantFrog.getHitPoints(), 15);
+        geralt.attack(giantFrog,15);
+        assertEquals(giantFrog.getHitPoints(), 13);
     }
 
     @Test
@@ -71,10 +71,13 @@ class WitcherFightingMonsterTest {
         geralt.magicCast(weakening, giantFrog);
         geralt.magicCast(weakening, giantFrog);
         geralt.magicCast(weakening, giantFrog);
+        geralt.magicCast(weakening, giantFrog);
+        geralt.magicCast(weakening, giantFrog);
+        geralt.magicCast(weakening, giantFrog);
 
         giantFrog.attack(geralt, 50);
 
-        assertEquals(geralt.getHitPoints(), 20);
+        assertEquals(geralt.getHitPoints(), 40);
 
     }
 
@@ -87,7 +90,7 @@ class WitcherFightingMonsterTest {
 
         geralt.attack(giantFrog, 30);
 
-        assertEquals(giantFrog.getHitPoints(), 10);
+        assertEquals(giantFrog.getHitPoints(), 6);
 
     }
 
@@ -97,7 +100,7 @@ class WitcherFightingMonsterTest {
         geralt.magicCast(weakening, giantFrog);
 
         assertEquals(giantFrog.getMana(), 3);
-        assertEquals(geralt.getMana(), 5);
+        assertEquals(geralt.getMana(), 15);
 
     }
 
@@ -106,10 +109,10 @@ class WitcherFightingMonsterTest {
         giantFrog.magicCast(glueSlap,geralt);
         geralt.magicCast(glueSlap,giantFrog);
         giantFrog.attack(geralt,50);
-        geralt.attack(giantFrog,30);
-        assertEquals(geralt.getHitPoints(), 8);
-        assertEquals(giantFrog.getHitPoints(), 8);
-        assertEquals(geralt.getMana(), 7);
+        geralt.attack(giantFrog,20);
+        assertEquals(geralt.getHitPoints(), 11);
+        assertEquals(giantFrog.getHitPoints(), 11);
+        assertEquals(geralt.getMana(), 17);
         assertEquals(giantFrog.getMana(), 3);
     }
 

@@ -1,8 +1,8 @@
-package mat.ned.mechanics.magic;
+package mat.ned.mechanics.specialAttacks;
 
 import mat.ned.mechanics.species.Species;
 
-public abstract class Magic<E> {
+public abstract class SpecialAttacks<E> {
 
     protected int manaCost;
     protected Species caster;

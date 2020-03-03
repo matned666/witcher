@@ -44,7 +44,7 @@ public abstract class Place {
     public void print() {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                System.out.print(matrix[i][j].toString());
+                System.out.print(matrix[i][j].print());
             }
             System.out.println();
         }
@@ -81,6 +81,8 @@ public abstract class Place {
             case "x": return new Bushes();
             case "%": return new Swamp();
             case "+": return new Door();
+            case "/": return new StairsUp();
+            case "\\": return new StairsDown();
             default: return null;
         }
     }

@@ -1,18 +1,28 @@
-package mat.ned;
+package mat.ned.mechanics.movement;
 
-import mat.ned.mechanics.maps.placesMaps.*;
+import mat.ned.mechanics.maps.placesMaps.ParametrizedMap;
+import mat.ned.mechanics.maps.placesMaps.Place;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
 
-public class Main {
+import static org.junit.jupiter.api.Assertions.*;
 
-    public static void main(String[] args) throws FileNotFoundException {
-        Place forest1 = new Forest1();
-        forest1.print();
-        Place city = new CityOfAvalon();
-        city.print();
-        Place sanctuary = new Sanctuary();
-        sanctuary.print();
+class GameFactoryTest {
+
+    @BeforeEach
+    void setup() throws FileNotFoundException {
+        Place testPalace = new ParametrizedMap("");
+    }
+
+    @Test
+    void isRandomPositionOfSpeciesCorrect(){
+
+    }
+
+    @Test
+    void notTestAtAll_ShowsMaps() throws FileNotFoundException {
         new ParametrizedMap("CavernsUnderTowerOfMAges.map").print();
         System.out.println();
         new ParametrizedMap("TowerOfMAgesLvl1.map").print();
@@ -26,6 +36,6 @@ public class Main {
         new ParametrizedMap("TowerOfMAgesLvl5.map").print();
         System.out.println();
         new ParametrizedMap("TowerOfMAgesLvl6.map").print();
-
     }
+
 }

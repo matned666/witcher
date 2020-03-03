@@ -1,4 +1,4 @@
-package mat.ned.mechanics;
+package mat.ned.mechanics.species;
 
 import mat.ned.mechanics.magic.Magic;
 import mat.ned.mechanics.maps.placesMaps.Direction;
@@ -18,9 +18,11 @@ public abstract class Species {
     protected boolean isWaterBreathing;
     protected String name;
     protected int strength;
-    int rowMove;
-    int columnMove;
+    private int rowMove;
+    private int columnMove;
+    private Stats stats;
 
+    public abstract void action(int choice);
 
     public abstract String typeOfSpecies();
 
@@ -51,8 +53,17 @@ public abstract class Species {
         return weakenAmount;
     }
 
+    public int getStrength() {
+        return strength;
+    }
+
     public void weaken(int amount) {
         weakenAmount += amount;
+    }
+
+    public String talk(String speach){
+        System.out.println(speach);
+        return speach;
     }
 
     public void magicCast(Magic magic, Species species) {
@@ -139,7 +150,8 @@ public abstract class Species {
 
 
     public String getName() {
-        return name;
+        if(name != null) return name;
+        else return "";
     }
 
     public void action(Direction direction){
@@ -154,5 +166,10 @@ public abstract class Species {
                 System.out.println(this.typeOfSpecies()+ " has attacked "+attacked.typeOfSpecies()+" for "+hit+" HP");
             }
 
+    }
+
+
+    public void isPoisoned(int poisonLevel){
+        //TODO
     }
 }
