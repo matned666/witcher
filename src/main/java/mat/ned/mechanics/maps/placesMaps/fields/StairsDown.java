@@ -15,7 +15,7 @@ public class StairsDown extends MapField  {
 
     @Override
     public String toString() {
-        return "\\";
+        return "<";
     }
 
     @Override

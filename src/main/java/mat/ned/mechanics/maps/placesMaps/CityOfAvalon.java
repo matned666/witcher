@@ -12,7 +12,12 @@ public class CityOfAvalon extends Place {
         splitLoadedDataToMapArray(path);
     }
 
-     @Override
+    @Override
+    public String toString() {
+        return Colored.get(Colored.ANSI_YELLOW,Colored.ANSI_BLACK,"C");
+    }
+
+    @Override
     public boolean isAccessible() {
         return this.isAccessible;
     }
@@ -25,6 +30,11 @@ public class CityOfAvalon extends Place {
     @Override
     public MapStageType getPlaceType() {
         return this.getPlaceType;
+    }
+
+    @Override
+    public String getFileSign() {
+        return null;
     }
 
 }

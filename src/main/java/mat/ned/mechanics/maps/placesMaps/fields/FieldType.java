@@ -1,4 +1,4 @@
-package mat.ned.mechanics.maps.placesMaps;
+package mat.ned.mechanics.maps.placesMaps.fields;
 
 public enum FieldType {
 

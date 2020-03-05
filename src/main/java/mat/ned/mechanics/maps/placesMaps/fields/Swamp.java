@@ -16,7 +16,7 @@ public class Swamp extends MapField {
 
     @Override
     public String toString() {
-        return Colored.get(Colored.ANSI_YELLOW, "_");
+        return Colored.get(Colored.ANSI_BLUE, "_");
     }
 
     @Override

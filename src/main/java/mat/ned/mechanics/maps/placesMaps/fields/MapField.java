@@ -1,7 +1,6 @@
 package mat.ned.mechanics.maps.placesMaps.fields;
 
 import mat.ned.mechanics.species.Species;
-import mat.ned.mechanics.maps.placesMaps.FieldType;
 
 import java.util.List;
 

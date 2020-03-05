@@ -5,22 +5,32 @@ import mat.ned.mechanics.maps.placesMaps.Direction;
 import mat.ned.mechanics.maps.placesMaps.Place;
 import mat.ned.mechanics.maps.placesMaps.fields.MapField;
 import mat.ned.mechanics.maps.placesMaps.fields.Water;
+import mat.ned.mechanics.maps.worldMap.WorldMap;
 
 public abstract class Species {
 
     protected int hp;
     protected int weakenAmount;
     protected int mana;
-    protected int rowPosition;
-    protected int columnPosition;
-    protected Place actualMap;
-    protected MapField actualField;
+
+    private Place actualMap;
+    private MapField actualField;
     protected boolean isWaterBreathing;
     protected String name;
     protected int strength;
+
+    private int rowPosition;
+    private int columnPosition;
     private int rowMove;
     private int columnMove;
+
+    private int rowWorldMap;
+    private int columnWorldMap;
+    private int rowWorldMapMove;
+    private int columnWorldMapMove;
+
     private Stats stats;
+    private WorldMap currentWorldMap;
 
     public abstract void action(int choice);
 
@@ -57,6 +67,10 @@ public abstract class Species {
         return strength;
     }
 
+    public Place getActualMap() {
+        return actualMap;
+    }
+
     public void weaken(int amount) {
         weakenAmount += amount;
     }
@@ -87,8 +101,33 @@ public abstract class Species {
         this.actualMap = actualMap;
     }
 
+    public void move(Direction direction){
+        moveDirection(direction);
+        if(isInBounds() ){
+            if(actualMap.getMatrix()[rowPosition+rowMove][columnPosition+columnMove].isAccessible()) {
+                actualField.setAccessible(true);
+                actualField.setSpeciesOnThis(null);
+                setActualField(rowPosition + rowMove, columnPosition + columnMove);
+                actualField.setAccessible(false);
+                actualField.setSpeciesOnThis(this);
+                getEffect(this);
+            }else{
+                setActualField(rowPosition,columnPosition);
+                action(direction);
+            }
+        }
+    }
 
-    public void moveDirection(Direction direction) {
+    public void moveMap(Direction direction) {
+        moveDirection(direction);
+            if(currentWorldMap.getMatrix()[rowWorldMap+rowMove][columnWorldMap+columnMove].isAccessible()) {
+                setLocation(rowWorldMap+rowMove, columnWorldMap+columnMove);
+            }else{
+                setLocation(rowWorldMap,columnWorldMap);
+            }
+    }
+
+    private void moveDirection(Direction direction) {
         switch (direction){
             case LEFT:
                 rowMove = 0;
@@ -110,22 +149,6 @@ public abstract class Species {
         }
     }
 
-    public void move(Direction direction){
-        moveDirection(direction);
-        if(isInBounds() ){
-            if(actualMap.getMatrix()[rowPosition+rowMove][columnPosition+columnMove].isAccessible()) {
-                actualField.setAccessible(true);
-                actualField.setSpeciesOnThis(null);
-                setActualField(rowPosition + rowMove, columnPosition + columnMove);
-                actualField.setAccessible(false);
-                actualField.setSpeciesOnThis(this);
-                getEffect(this);
-            }else{
-                setActualField(rowPosition,columnPosition);
-                action(direction);
-            }
-        }
-    }
 
     private void getEffect(Species species){
         if (actualField.getClass().getSimpleName().equals(Water.class.getSimpleName()) && !isWaterBreathing && this.isAlive())
@@ -172,4 +195,17 @@ public abstract class Species {
     public void isPoisoned(int poisonLevel){
         //TODO
     }
+
+    public void setLocation(int row, int column) {
+        this.actualMap = currentWorldMap.getMatrix()[row][column];
+        this.rowWorldMap = row;
+        this.columnWorldMap = column;
+    }
+
+    public void setCurrentWorldMap(WorldMap currentWorldMap) {
+        this.currentWorldMap = currentWorldMap;
+        setLocation(currentWorldMap.getDefaultStartRow(),currentWorldMap.getDefaultStartColumn());
+    }
+
+
 }

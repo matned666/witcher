@@ -38,7 +38,7 @@ class PlaceTest {
         for (int i =0;i < testPlace.matrix[6].length; i++)
             assertEquals(Wall.class,testPlace.matrix[6][i].getClass());
         for (int i =0;i < testPlace.matrix[7].length; i++)
-            assertEquals(Water.class ,testPlace.matrix[7][i].getClass());
+            assertEquals(WaterPlace.class ,testPlace.matrix[7][i].getClass());
         for (int i =0;i < testPlace.matrix[8].length; i++)
             assertEquals(Trees.class ,testPlace.matrix[8][i].getClass());
         for (int i =0;i < testPlace.matrix[9].length; i++)

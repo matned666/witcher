@@ -14,6 +14,7 @@ class Stats {
     private int perception;
 
     private int fightingSkill;
+    private int speed;
 
     private Stats(StatsBuilder statsBuilder) {
         this.hp = statsBuilder.hp;
@@ -27,6 +28,7 @@ class Stats {
         this.toughness = statsBuilder.toughness;
         this.perception = statsBuilder.perception;
         this.fightingSkill = statsBuilder.fightingSkill;
+        this.speed = statsBuilder.speed;
     }
 
     public void setHp(int hp) {
@@ -62,6 +64,9 @@ class Stats {
     public void setFightingSkill(int fightingSkill) {
         this.fightingSkill = fightingSkill;
     }
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
 
     public int getHp() {
         return hp;
@@ -96,6 +101,9 @@ class Stats {
     public int getFightingSkill() {
         return fightingSkill;
     }
+    public int getSpeed() {
+        return speed;
+    }
 
     @Override
     public String toString() {
@@ -111,6 +119,7 @@ class Stats {
                 ", toughness=" + toughness +
                 ", perception=" + perception +
                 ", fightingSkill=" + fightingSkill +
+                ", speed=" + speed +
                 '}';
     }
 
@@ -140,6 +149,7 @@ class Stats {
         private int perception;
 
         private int fightingSkill;
+        private int speed;
 
         public StatsBuilder(int hp, int strength) {
             this.hp = hp;
@@ -188,6 +198,11 @@ class Stats {
 
         StatsBuilder fightingSkill(int fightingSkill) {
             this.fightingSkill = fightingSkill;
+            return this;
+        }
+
+        StatsBuilder speed(int speed) {
+            this.speed = speed;
             return this;
         }
 

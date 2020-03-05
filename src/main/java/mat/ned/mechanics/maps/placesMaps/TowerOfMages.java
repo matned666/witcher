@@ -1,22 +1,20 @@
 package mat.ned.mechanics.maps.placesMaps;
 
-import mat.ned.mechanics.maps.placesMaps.Place;
 import mat.ned.mechanics.maps.worldMap.MapStageType;
 
 import java.io.FileNotFoundException;
 
-public class Sanctuary extends Place {
+public class TowerOfMages extends Place {
 
-    public Sanctuary() throws FileNotFoundException {
+    public TowerOfMages() throws FileNotFoundException {
         this.isAccessible = true;
-        this.getPlaceType = MapStageType.CITY;
-        path = "src/main/resources/Sanctuary.map";
-        splitLoadedDataToMapArray(path);
+        this.getPlaceType = MapStageType.FORREST;
+        splitLoadedDataToMapArray("src/main/resources/TowerOfMAgesLvl1.map");
     }
 
     @Override
     public String toString() {
-        return Colored.get(Colored.ANSI_YELLOW,"S");
+        return Colored.get(Colored.ANSI_YELLOW,"T");
     }
 
     @Override

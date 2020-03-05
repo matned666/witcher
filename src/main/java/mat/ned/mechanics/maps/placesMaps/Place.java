@@ -9,20 +9,32 @@ import java.util.Scanner;
 
 public abstract class Place {
 
-    protected int ROWS;
+
+    static final int ROWS_NUMBER_FOR_RANDOM_PLACES = 30;
+    static final int COLUMNS_NUMBER_FOR_RANDOM_PLACES = 90;
+
+    private int ROWS;
     protected boolean isAccessible;
-    protected MapStageType getPlaceType;
-    protected MapField[][] matrix;
+    MapStageType getPlaceType;
+    MapField[][] matrix;
     protected String path;
+    private MapField defaultStartPosition;
 
     public Place() {
     }
+
+    public abstract String toString();
 
     public abstract boolean isAccessible();
     public abstract void action();
 
     public abstract MapStageType getPlaceType();
 
+    public abstract String getFileSign();
+
+    public void setDefaultStartPosition(MapField defaultStartPosition) {
+        this.defaultStartPosition = defaultStartPosition;
+    }
 
     void splitLoadedDataToMapArray(String path) throws FileNotFoundException {
         File file = new File(path);
@@ -50,7 +62,7 @@ public abstract class Place {
         }
     }
 
-    private MapField[] getField1DArray (String[] arr){
+    private MapField[] getField1DArray (String[] arr) throws FileNotFoundException {
         MapField[] temp = new MapField[arr.length];
         for (int i = 0; i < arr.length; i++){
             temp[i] = getField(arr[i]);
@@ -67,7 +79,7 @@ public abstract class Place {
         return counter;
     }
 
-    private MapField getField(String loadedString) {
+    private MapField getField(String loadedString) throws FileNotFoundException {
         switch (loadedString) {
             case "*": return new Road();
             case "H": return new House();
@@ -81,8 +93,8 @@ public abstract class Place {
             case "x": return new Bushes();
             case "%": return new Swamp();
             case "+": return new Door();
-            case "/": return new StairsUp();
-            case "\\": return new StairsDown();
+            case ">": return new StairsUp();
+            case "<": return new StairsDown();
             default: return null;
         }
     }
@@ -90,4 +102,5 @@ public abstract class Place {
     public MapField[][] getMatrix() {
         return matrix;
     }
+
 }

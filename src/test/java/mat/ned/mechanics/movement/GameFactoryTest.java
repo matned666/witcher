@@ -23,19 +23,7 @@ class GameFactoryTest {
 
     @Test
     void notTestAtAll_ShowsMaps() throws FileNotFoundException {
-        new ParametrizedMap("CavernsUnderTowerOfMAges.map").print();
-        System.out.println();
-        new ParametrizedMap("TowerOfMAgesLvl1.map").print();
-        System.out.println();
-        new ParametrizedMap("TowerOfMAgesLvl2.map").print();
-        System.out.println();
-        new ParametrizedMap("TowerOfMAgesLvl3.map").print();
-        System.out.println();
-        new ParametrizedMap("TowerOfMAgesLvl4.map").print();
-        System.out.println();
-        new ParametrizedMap("TowerOfMAgesLvl5.map").print();
-        System.out.println();
-        new ParametrizedMap("TowerOfMAgesLvl6.map").print();
-    }
+
+           }
 
 }

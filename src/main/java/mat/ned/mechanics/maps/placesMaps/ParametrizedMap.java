@@ -10,7 +10,13 @@ public class ParametrizedMap  extends Place {
         this.isAccessible = true;
         this.getPlaceType = MapStageType.FORREST;
         this.path = path;
+
         splitLoadedDataToMapArray(path);
+    }
+
+    @Override
+    public String toString() {
+        return null;
     }
 
     @Override
@@ -28,4 +34,12 @@ public class ParametrizedMap  extends Place {
         return this.getPlaceType;
     }
 
+    @Override
+    public String getFileSign() {
+        return null;
+    }
+
+
 }
+
+
